@@ -57,53 +57,24 @@
     }
 }
 
-// Newton's method for calculation of square roots
-@function sqrt($r) {
-    $x0: 1;
-    $x1: $x0;
-
-    @for $i from 1 through 10 {
-        $x1: $x0 - ($x0 * $x0 - abs($r)) / (2 * $x0);
-        $x0: $x1;
-    }
-
-    @return $x1;
-}
-
-@function get-luminance($color) {
-    $r: red($color);
-    $g: green($color);
-    $b: blue($color);
-    $l: sqrt(.299 * $r * $r + .587 * $g * $g + .114 * $b * $b);
-    @return $l;
-}
-
-@function get-text-color($background-color, $color-for-light: $color-text-on-light, $color-for-dark: $color-text-on-dark) {
-    $l: get-luminance($background-color);
-    @if ($l > 176) {
-        @return $color-for-light;
-    }
-
-    @return $color-for-dark;
-}
-
 @mixin background-color($background-color) {
     background-color: $background-color;
-    color: get-text-color($background-color);
+    color: $color-text;
 }
 
 @mixin background-color-with-label-text($background-color) {
     background-color: $background-color;
-    color: get-text-color($background-color, $color-text-label-on-light, $color-text-label-on-dark);
+    color: $color-text-label;
 }
 
 @mixin background-color-with-disabled-text($background-color) {
     background-color: $background-color;
-    color: get-text-color($background-color, $color-text-disabled-on-light, $color-text-disabled-on-dark);
+    color: $color-text-disabled;
 }
 
 @function get-hover-color($color) {
-    @return darken($color, 10%);
+    @return $color;
+    // @return darken($color, 10%);
 }
 
 %empty-text {

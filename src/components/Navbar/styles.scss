@@ -1,8 +1,5 @@
 @import '~base-scss/base';
 
-$color-text-on-navbar: get-text-color($color-navbar);
-$color-text-on-primary: get-text-color($color-primary);
-
 .navbar {
     display: flex;
     align-items: center;
@@ -62,12 +59,8 @@ $color-text-on-primary: get-text-color($color-primary);
         :global {
             .input-wrapper {
                 .input {
-                    border-bottom-color: get-text-color($color-navbar, $color-separator-on-light, $color-separator-on-dark);
+                    border-bottom-color: $color-text-active-tab;
                     color: $color-text-on-navbar;
-
-                    &::placeholder {
-                        color: get-text-color($color-navbar, $color-text-placeholder-on-light, $color-text-placeholder-on-dark);
-                    }
                 }
             }
         }

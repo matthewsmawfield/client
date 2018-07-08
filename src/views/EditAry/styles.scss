@@ -25,6 +25,10 @@ $width-right-min: 800px;
             white-space: nowrap;
         }
 
+        .no-template {
+            @include background-color($color-foreground);
+        }
+
         .action-buttons {
             flex-shrink: 0;
             padding: 0 $spacing-medium;
@@ -62,7 +66,6 @@ $width-right-min: 800px;
                 min-width: $width-right-min;
             }
         }
-
     }
 }
 

@@ -7,6 +7,12 @@ import { currentUserActiveProjectSelector } from '#redux';
 import logo from '#resources/img/deep-logo.svg';
 import _ts from '#ts';
 
+import {
+    defaultTheme,
+    classicDeepTheme,
+    setTheme,
+} from '#utils/theme';
+
 import styles from './styles.scss';
 
 const propTypes = {
@@ -21,6 +27,18 @@ const mapStateToProps = state => ({
 @connect(mapStateToProps, undefined)
 export default class Dashboard extends React.PureComponent {
     static propTypes = propTypes;
+
+    constructor(props) {
+        super(props);
+
+        setTimeout(() => {
+            setTheme(classicDeepTheme);
+        }, 1000);
+
+        setTimeout(() => {
+            setTheme(defaultTheme);
+        }, 5000);
+    }
 
     render() {
         const { currentUserActiveProject } = this.props;
