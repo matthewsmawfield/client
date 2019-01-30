@@ -40,6 +40,9 @@ export default class Matrix1dRow extends React.PureComponent {
         active: this.props.selectedCells[key],
         disabled: this.props.disabled,
         readOnly: this.props.readOnly,
+        rowStyle: this.props.rowStyle,
+        activeCellStyle: this.props.activeCellStyle,
+        hoverStyle: this.props.hoverStyle,
     })
 
     render() {

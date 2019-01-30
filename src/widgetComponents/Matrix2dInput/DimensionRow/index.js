@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import memoize from 'memoize-one';
 
 import List from '#rscv/List';
 import {
@@ -27,14 +28,12 @@ export default class DimensionRow extends React.PureComponent {
 
     static keySelector = subdimension => subdimension.id;
 
-    // TODO: memoize this function
-    static getRowStyle = color => ({
+    getRowStyle = memoize(color => ({
         backgroundColor: color,
         color: getColorOnBgColor(color),
-    });
+    }));
 
-    // TODO: memoize this function
-    static getActiveCellStyle = (rowStyle) => {
+    getActiveCellStyle = memoize((rowStyle) => {
         const outlineWidth = 2;
 
         const stripeWidth = 4;
@@ -56,29 +55,12 @@ export default class DimensionRow extends React.PureComponent {
                 ${secondColor} ${stripeWidth * 2}px
             )`,
         };
-    };
-
-    static getHoverStyle = rowStyle => ({
-        outline: `1px dashed ${rowStyle.color}`,
-        outlineOffset: '-3px',
     });
 
-    constructor(props) {
-        super(props);
-
-        const { dimension: { color = '#ffffff' } } = this.props;
-        this.rowStyle = DimensionRow.getRowStyle(color);
-        this.activeCellStyle = DimensionRow.getActiveCellStyle(this.rowStyle);
-        this.hoverStyle = DimensionRow.getHoverStyle(this.rowStyle);
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.props.dimension.color !== nextProps.dimension.color) {
-            this.rowStyle = DimensionRow.getRowStyle(nextProps.dimension.color || '#ffffff');
-            this.activeCellStyle = DimensionRow.getActiveCellStyle(this.rowStyle);
-            this.hoverStyle = DimensionRow.getHoverStyle(this.rowStyle);
-        }
-    }
+    getHoverStyle = memoize(rowStyle => ({
+        outline: `1px dashed ${rowStyle.color}`,
+        outlineOffset: '-3px',
+    }));
 
     rendererParams = (key, subdimension, i) => {
         const {
@@ -86,6 +68,7 @@ export default class DimensionRow extends React.PureComponent {
                 subdimensions,
                 tooltip,
                 title,
+                color,
             },
             ...otherProps
         } = this.props;
@@ -101,14 +84,18 @@ export default class DimensionRow extends React.PureComponent {
             </td>
         ) : undefined;
 
+        const rowStyle = this.getRowStyle(color);
+        const activeCellStyle = this.getActiveCellStyle(rowStyle);
+        const hoverStyle = this.getHoverStyle(rowStyle);
+
         return {
             subdimension,
             subdimensionId: key,
 
             children,
-            rowStyle: this.rowStyle,
-            activeCellStyle: this.activeCellStyle,
-            hoverStyle: this.hoverStyle,
+            rowStyle,
+            activeCellStyle,
+            hoverStyle,
 
             ...otherProps,
         };

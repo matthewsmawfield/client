@@ -70,18 +70,21 @@ export default class Matrix1dCell extends React.PureComponent {
             disabled,
             readOnly,
             active,
+            activeCellStyle,
+            rowStyle,
         } = this.props;
 
         const { isBeingDraggedOver } = this.state;
 
         const className = _cs(
             styles.matrixCell,
-            active && styles.active,
+            // active && styles.active,
             isBeingDraggedOver && styles.isBeingDraggedOver,
         );
 
         return (
             <button
+                style={active ? activeCellStyle : rowStyle}
                 className={className}
                 onDragEnter={this.handleDragEnter}
                 onDragLeave={this.handleDragExit}
