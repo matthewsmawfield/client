@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { persistStore } from 'redux-persist';
 
 import { startActionsSync } from '#rsu/redux-sync';
+import { initializeStyles } from '#rsu/styles';
 
 import store from '#store';
 
@@ -14,6 +15,8 @@ export default class Root extends React.Component {
 
         this.state = { rehydrated: false };
         this.store = store;
+
+        initializeStyles();
 
         console.info('React version:', React.version);
     }
