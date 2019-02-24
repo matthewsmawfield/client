@@ -45,13 +45,13 @@ $height-deep-logo: 256px;
         width: $width-login-form;
 
         .hid-link-container {
-            background-color: $color-foreground;
-color: $color-text-on-foreground;
             display: flex;
             align-items: center;
             flex-basis: 100%;
             flex-direction: column;
+            background-color: $color-foreground;
             padding: $spacing-large;
+            color: $color-text-on-foreground;
 
             .hid-link {
                 display: flex;
@@ -83,14 +83,14 @@ color: $color-text-on-foreground;
                 }
 
                 .or {
-                    background-color: $color-foreground;
-color: $color-text-on-foreground;
                     position: absolute;
                     top: 0;
                     left: 50%;
                     transform: translate(-50%);
+                    background-color: $color-foreground;
                     padding: 0 $spacing-extra-small;
                     text-transform: uppercase;
+                    color: $color-text-on-foreground;
                     font-size: $font-size-small;
                 }
             }
@@ -98,9 +98,9 @@ color: $color-text-on-foreground;
 
         .login-form {
             background-color: $color-foreground;
-color: $color-text-on-foreground;
             padding: $spacing-small $spacing-large $spacing-large;
             width: 100%;
+            color: $color-text-on-foreground;
 
             .action-buttons {
                 display: flex;
@@ -115,14 +115,14 @@ color: $color-text-on-foreground;
         }
 
         .register-link-container {
-            background-color: $color-foreground;
-color: $color-text-on-foreground;
             display: flex;
             align-items: center;
             flex-basis: 100%;
             justify-content: center;
             margin-top: $spacing-extra-small;
+            background-color: $color-foreground;
             padding: $spacing-large;
+            color: $color-text-on-foreground;
 
             p {
                 margin: $spacing-small;
