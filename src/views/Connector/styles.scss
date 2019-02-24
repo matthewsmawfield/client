@@ -2,22 +2,22 @@
 
 .connectors {
     .sidebar {
-        background-color: $color-foreground-alt;
-color: $color-text-on-foreground-alt
         display: flex;
         position: relative;
         flex-direction: column;
+        background-color: $color-foreground-alt;
+        color: $color-text-on-foreground-alt;
 
         .header {
-            background-color: $color-background-header;
-color: $color-text-on-background-header
             display: flex;
             align-items: center;
             flex-shrink: 0;
             flex-wrap: wrap;
             justify-content: space-between;
             border-bottom: $width-separator-thin solid $color-separator;
+            background-color: $color-background-header;
             padding: $spacing-small;
+            color: $color-text-on-background-header;
 
             .heading {
                 flex-grow: 1;
@@ -63,9 +63,9 @@ color: $color-text-on-background-header
         flex-direction: column;
 
         .connector-details {
-            background-color: $color-background-alt;
-color: $color-text-on-background-alt
             flex-grow: 1;
+            background-color: $color-background-alt;
+            color: $color-text-on-background-alt;
         }
 
         .no-connector {
