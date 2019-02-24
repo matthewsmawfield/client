@@ -2,13 +2,15 @@
 
 .connectors {
     .sidebar {
-        @include background-color($color-foreground-alt);
+        background-color: $color-foreground-alt;
+color: $color-text-on-foreground-alt
         display: flex;
         position: relative;
         flex-direction: column;
 
         .header {
-            @include background-color($color-background-header);
+            background-color: $color-background-header;
+color: $color-text-on-background-header
             display: flex;
             align-items: center;
             flex-shrink: 0;
@@ -61,7 +63,8 @@
         flex-direction: column;
 
         .connector-details {
-            @include background-color($color-background-alt);
+            background-color: $color-background-alt;
+color: $color-text-on-background-alt
             flex-grow: 1;
         }
 
