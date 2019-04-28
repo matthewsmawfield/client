@@ -42,6 +42,8 @@ const totMinutes = (time) => {
 
     return (parseInt(splits[0], 10) * 60) + parseInt(splits[1], 10);
 };
+
+// FIXME: move to utils
 export const processEntryFilters = (filters) => {
     const result = [];
     filters.forEach((filter) => {
